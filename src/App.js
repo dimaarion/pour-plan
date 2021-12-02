@@ -6,7 +6,7 @@ function App() {
       <table className = "table">
         <thead>
           <tr>
-            <td colSpan="5"><textarea placeholder = "Название организации" className = "form-control"/></td>
+            <td colSpan="5"><textarea  placeholder = "Название организации" className = "form-control text-center"/></td>
           </tr>
         </thead>
         <tbody>
