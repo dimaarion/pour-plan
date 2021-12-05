@@ -22,17 +22,14 @@ function App() {
   const [odobr, setOdobr] = useState("");
   const [devel, setDevel] = useState("");
   const [plan, setPlan] = useState([{}]);
-function recursion(props) {
 
-  }
 useEffect(()=>{
     get(setPlan,"pourplan.json");
-    recursion(props.plan)
+    
 },[])
 
   return (
     <div className="container">
-    {console.log(plan)}
       <table className = "table">
         <thead>
           <tr>

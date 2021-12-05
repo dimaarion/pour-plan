@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../css/view.css";
+import {arrayPlanName} from "../action";
 export default function View(props) {
 
 	const styles = {
 		headDoc:{width:"20%"}
 	}
+	useEffect(()=>{
+		console.log(arrayPlanName(props.plan,"headDoc"));
+	},[props.plan])
 	return (
 			<table className = "table view">
 			<thead>
@@ -58,13 +62,9 @@ export default function View(props) {
           		</tr>
 			</thead>
 			<tbody>
-			<tr>
-				<td className = "text-center">Этапы занятие</td>
-				<td className = "text-center">Деятельность преподавателя</td>
-				<td className = "text-center">Деятельность обучающихся</td>
-				<td className = "text-center">Методы и формы организации занятия</td>
-				<td className = "text-center">Время</td>
-			</tr>
+			<tr>{arrayPlanName(props.plan,"headDoc").map((x)=>x.content.map((x2,i)=><td key = {x2 + i} className = "text-center">{x2}</td>))}</tr>
+			<tr>{arrayPlanName(props.plan,"orEtap").map((x)=>x.content.map((x2,i)=><td key = {x2 + i} className = "text-left">{x2}</td>))}</tr>
+			<tr>{arrayPlanName(props.plan,"orEtap_1").map((x)=>x.content.map((x2,i)=><td key = {x2 + i} className = "text-left">{x2}</td>))}</tr>
 			</tbody>
 
 			</table>
