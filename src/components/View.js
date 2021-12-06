@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 import "../css/view.css";
 import {arrayPlanName} from "../action";
+import OrganEtap from "./OrganEtap.js";
+import PodgotovEtap from "./PodgotovEtap.js";
+import Competention from "./Competention.js";
 export default function View(props) {
 
 	const styles = {
 		headDoc:{width:"20%"}
 	}
-	useEffect(()=>{
-		console.log(arrayPlanName(props.plan,"headDoc"));
-	},[props.plan])
+
 	return (
+		<div>
 			<table className = "table view">
 			<thead>
 				<tr>
@@ -37,7 +39,7 @@ export default function View(props) {
 				</tr>
 				<tr>
             		<td colSpan = "2">
-              			<div>Дата проведения: {props.dateProv.split("-").reverse().join()} г.</div>
+              			<div>Дата проведения: {props.dateProv.split("-").reverse().join(".")} г.</div>
               			<div>Время проведения: {props.timeProv}</div>
               			<div>Курс, группа: {props.kurs}</div>
               			<div>Специальность: {props.prof}</div>
@@ -61,12 +63,24 @@ export default function View(props) {
           			<td colSpan = "5" className = "text-center">{props.year + " г."}</td>
           		</tr>
 			</thead>
-			<tbody>
-			<tr>{arrayPlanName(props.plan,"headDoc").map((x)=>x.content.map((x2,i)=><td key = {x2 + i} className = "text-center">{x2}</td>))}</tr>
-			<tr>{arrayPlanName(props.plan,"orEtap").map((x)=>x.content.map((x2,i)=><td key = {x2 + i} className = "text-left">{x2}</td>))}</tr>
-			<tr>{arrayPlanName(props.plan,"orEtap_1").map((x)=>x.content.map((x2,i)=><td key = {x2 + i} className = "text-left">{x2}</td>))}</tr>
-			</tbody>
-
+				<Competention
+				motivationTheme = {props.motivationTheme}
+				mesto = {props.mesto}
+				nameEtap = {props.nameEtap}
+				numEtap = {props.numEtap}
+				numTimeTheme = {props.numTimeTheme}
+				themeUr = {props.themeUr}
+				numTemeUr = {props.numTemeUr}
+				numTimeRazdel = {props.numTimeRazdel}
+				nameRazdel = {props.nameRazdel}
+				numRazdel = {props.numRazdel}/>
 			</table>
+			<table className = "table view">
+				<tbody>
+					<OrganEtap plan = {props.plan}/>
+					<PodgotovEtap plan = {props.plan}/>
+				</tbody>
+			</table>
+		</div>
 		)
 }

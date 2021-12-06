@@ -22,10 +22,19 @@ function App() {
   const [odobr, setOdobr] = useState("");
   const [devel, setDevel] = useState("");
   const [plan, setPlan] = useState([{}]);
+  const [numRazdel, setNumRazdel] = useState(1);
+  const [nameRazdel, setNameRazdel] = useState("");
+  const [numTimeRazdel, setNumTimeRazdel] = useState(2);
+  const [numTemeUr, setNumTemeUr] = useState(1);
+  const [themeUr, setThemeUr] = useState("");
+  const [numTimeTheme, setTimeTheme] = useState(2);
+  const [nameEtap, setNameEtap] = useState("");
+  const [numEtap, setNumEtap] = useState(2);
+  const [motivationTheme, setMotivationTheme] = useState("");
 
 useEffect(()=>{
     get(setPlan,"pourplan.json");
-    
+
 },[])
 
   return (
@@ -80,16 +89,51 @@ useEffect(()=>{
         </thead>
         <tbody>
           <tr>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-
+            <td><label htmlFor="nomerRazd">Номер раздела</label><input type="number" id = "nomerRazd" onChange = {(e)=>{setNumRazdel(e.target.value)}} className = "form-control text-left"/></td>
+            <td colSpan = "3"><label htmlFor="nameRazd">Название раздела</label><textarea id = "nameRazd" type="text" onChange = {(e)=>{setNameRazdel(e.target.value)}} className = "form-control text-left"/></td>
+            <td><label htmlFor="colNomerRazd">Количество часов на раздел</label><input id = "colNomerRazd" type="number" onChange = {(e)=>{setNumTimeRazdel(e.target.value)}} className = "form-control text-left"/></td>
+          </tr>
+          <tr>
+            <td><label htmlFor="numTemeUr">Номер темы</label><input id = "numTemeUr" type="number" onChange = {(e)=>{setNumTemeUr(e.target.value)}} className = "form-control text-left"/></td>
+            <td colSpan = "3"><label htmlFor="themeUr">Название темы</label><textarea id = "themeUr" type="text" onChange = {(e)=>{setThemeUr(e.target.value)}} className = "form-control text-left"/></td>
+            <td><label htmlFor="numTimeTheme">Количество часов на тему</label><input id = "numTimeTheme" type="number" onChange = {(e)=>{setTimeTheme(e.target.value)}} className = "form-control text-left"/></td>
+          </tr>
+           <tr>
+            <td colSpan = "4"><label htmlFor="nameEtap">Название этапа</label><textarea id = "nameEtap" type="text" onChange = {(e)=>{setNameEtap(e.target.value)}} className = "form-control text-left"/></td>
+            <td><label htmlFor="numEtap">Количество часов на этап</label><input id = "numEtap" type="number" onChange = {(e)=>{setNumEtap(e.target.value)}} className = "form-control text-left"/></td>
+          </tr>
+          <tr>
+            <td colSpan = "6"><label htmlFor="motivationTheme">Мотивация темы</label><textarea id = "motivationTheme" type="text" onChange = {(e)=>{setMotivationTheme(e.target.value)}} className = "form-control text-left"/></td>
           </tr>
         </tbody>
       </table>
-      <div><View plan = {plan} year = {year} odobr = {odobr} devel = {devel} mesto = {mesto} prof = {prof} kurs = {kurs} timeProv = {timeProv} dateProv = {dateProv} nameDis = {nameDis} nameDoc = {nameDoc} nameFIORight = {nameFIORight} nameFIOLeft = {nameFIOLeft} nameOrgan = {nameOrgan} namePostLeft = {namePostLeft} namePostRight = {namePostRight}/></div>
+      <div>
+      <View
+      motivationTheme = {motivationTheme}
+      numEtap = {numEtap}
+      nameEtap = {nameEtap}
+      numTimeTheme = {numTimeTheme}
+      themeUr = {themeUr}
+      numTemeUr = {numTemeUr}
+      numTimeRazdel = {numTimeRazdel}
+      nameRazdel = {nameRazdel}
+      numRazdel = {numRazdel}
+      plan = {plan}
+      year = {year}
+      odobr = {odobr}
+      devel = {devel}
+      mesto = {mesto}
+      prof = {prof}
+      kurs = {kurs}
+      timeProv = {timeProv}
+      dateProv = {dateProv}
+      nameDis = {nameDis}
+      nameDoc = {nameDoc}
+      nameFIORight = {nameFIORight}
+      nameFIOLeft = {nameFIOLeft}
+      nameOrgan = {nameOrgan}
+      namePostLeft = {namePostLeft}
+      namePostRight = {namePostRight}/></div>
     </div>
   );
 }
